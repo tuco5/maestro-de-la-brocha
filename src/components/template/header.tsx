@@ -3,31 +3,19 @@ import { Logo } from "./logo";
 
 export function Header() {
   return (
-    <header className="w-full absolute top-0 left-0 h-16 flex items-center justify-center bg-white/30 backdrop-blur-sm z-10">
-      <div className="max-w-6xl flex justify-between w-full items-center">
-        <Logo />
-        <Menu />
+    <header className="absolute top-0 left-0 z-10 flex min-h-16 w-full items-center justify-center bg-white/30 p-2 backdrop-blur-sm">
+      <div className="flex w-full max-w-6xl items-center justify-between">
+        <Logo className="text-xl sm:text-2xl md:text-3xl" />
         <CTA />
       </div>
     </header>
   );
 }
 
-function Menu() {
-  return (
-    <div className="flex gap-4">
-      <a href="#service">Servicios</a>
-      <a href="#process">Proceso</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contactanos</a>
-    </div>
-  );
-}
-
 function CTA() {
   return (
-    <button className="bg-gradient-to-tr from-sky-400 to-teal-600 text-white font-semibold px-4 py-1.5 rounded-full hover:opacity-85 cursor-pointer transition flex gap-2">
-      <span>Cotiza Ahora</span>
+    <button className="flex cursor-pointer gap-2 rounded-full bg-gradient-to-tr from-sky-400 to-teal-600 px-4 py-1.5 font-semibold text-white transition hover:opacity-85">
+      <span>Cotizar</span>
       <Whatsapp width="20px" height="20px" />
     </button>
   );
