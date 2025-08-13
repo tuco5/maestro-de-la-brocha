@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { Hero } from './_components/hero';
-import { Header } from '@/components/template';
+import { Header } from './_components/header';
 
 gsap.registerPlugin(ScrollTrigger);
 

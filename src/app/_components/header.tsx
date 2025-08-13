@@ -1,5 +1,5 @@
-import { FacebookButton, InstagramButton, WhatsappButton } from '../buttons';
-import { Logo } from './logo';
+import { FacebookButton, InstagramButton, WhatsappButton } from '@/components/buttons';
+import { Logo } from '@/components/logo';
 
 export function Header() {
   return (

@@ -1,13 +1,17 @@
 import { Badge } from '@/components/ui/badge';
 import { ContactButton } from '../../components/buttons';
 import { CircleCheckBig } from 'lucide-react';
+import { useCallback } from 'react';
 
 export function Hero() {
-  const ServicesList = ({ children }: PropsWithChildren) => (
-    <div className="flex items-center gap-2 text-neutral-200">
-      <CircleCheckBig className="size-4 text-cyan-500" />
-      <p className="text-sm sm:text-base">{children}</p>
-    </div>
+  const ServicesList = useCallback(
+    ({ children }: PropsWithChildren) => (
+      <div className="flex items-center gap-2 text-neutral-200">
+        <CircleCheckBig className="size-4 text-cyan-500" />
+        <p className="text-sm sm:text-base">{children}</p>
+      </div>
+    ),
+    []
   );
 
   return (
