@@ -1,28 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Federo } from "next/font/google";
+import {
+  geistMono,
+  geistSans,
+  paintCans,
+  rapScript,
+  wildBasic,
+} from "../fonts";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const comforterBrush = Federo({
-  variable: "--font-federo",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "El maestro de la brocha",
   description:
-    "Servicios profesionales de pintura que ofrecen mano de obra de alta calidad y un acabado hermoso para su hogar. Pintores confiables y con experiencia, dedicados a transformar su espacio.",
+    "Servicios profesionales de pintura, brindando mano de obra de alta calidad y un acabado hermoso para su hogar. Pintores confiables y con experiencia, dedicados a transformar su espacio.",
 };
 
 export default function RootLayout({
@@ -33,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${comforterBrush.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${paintCans.variable} ${rapScript.variable} ${wildBasic.variable} antialiased`}
       >
         {children}
       </body>
