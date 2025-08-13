@@ -15,16 +15,21 @@ export function Hero() {
       className="h-screen bg-cover bg-fixed bg-center"
       style={{ backgroundImage: "url('/images/hero.png')" }}
     >
-      <div className="flex h-full w-full flex-col items-center justify-center bg-black/80">
-        <div className="w-full max-w-6xl px-4">
-          <div className="flex max-w-full flex-col gap-6 rounded-md bg-neutral-50/10 p-6 backdrop-blur-sm sm:max-w-2/3 sm:gap-10">
-            <div className="flex flex-col gap-2 sm:gap-1">
+      <div className="flex h-full w-full flex-col items-center bg-black/60">
+        <div className="mt-48 w-full max-w-7xl px-4">
+          {/** Hero Banner */}
+          <div className="flex max-w-[650px] flex-col gap-6 rounded-md p-6 backdrop-blur-sm sm:max-w-2/3 sm:gap-10">
+            <div className="flex flex-col gap-2">
               <Badge className="bg-neutral-500/80">Transformamos tu espacio con estilo</Badge>
               <h2 className="text-5xl font-bold text-neutral-200 sm:text-6xl">
                 Pintura profesional
               </h2>
               <p className="text-lg font-semibold text-neutral-300 sm:text-2xl">
                 para hogares, negocios o grandes proyectos
+              </p>
+              <p className="text-neutral-300">
+                De una pared a una torre, de un local a un centro comercial. Acabados impecables, a
+                tiempo y con garantía.
               </p>
             </div>
 
