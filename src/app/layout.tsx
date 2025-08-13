@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 import { geistMono, geistSans, paintCans, rapScript, wildBasic } from '../fonts';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 
 import './globals.css';
 
@@ -10,8 +8,6 @@ export const metadata: Metadata = {
   description:
     'Servicios profesionales de pintura, brindando mano de obra de alta calidad y un acabado hermoso para su hogar. Pintores confiables y con experiencia, dedicados a transformar su espacio.',
 };
-
-gsap.registerPlugin(useGSAP);
 
 export default function RootLayout({
   children,
