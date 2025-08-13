@@ -1,5 +1,5 @@
 import { Badge } from '@/components/ui/badge';
-import { ContactButton } from './contact-button';
+import { ContactButton } from '../../components/buttons';
 import { CircleCheckBig } from 'lucide-react';
 
 export function Hero() {

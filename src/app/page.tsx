@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { Hero } from './_components/hero';
-import { ContactButton } from './_components/contact-button';
+import { FacebookButton, InstagramButton, WhatsappButton } from '../components/buttons';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,10 +17,14 @@ export default function HomePage() {
 
 function Header() {
   return (
-    <header className="fixed top-0 z-10 flex w-full justify-center bg-white/40 backdrop-blur-sm">
-      <div className="flex w-full max-w-6xl items-center justify-between px-4 py-2">
+    <header className="fixed top-0 z-10 flex w-full justify-center px-4 py-2 backdrop-blur-sm">
+      <div className="flex w-full max-w-6xl items-center justify-between px-4">
         <Logo className="text-xs" />
-        <ContactButton />
+        <div className="flex gap-3">
+          <FacebookButton />
+          <InstagramButton />
+          <WhatsappButton />
+        </div>
       </div>
     </header>
   );
