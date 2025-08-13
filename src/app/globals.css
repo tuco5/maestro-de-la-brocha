@@ -131,4 +131,8 @@
   .bg-blue-gradient {
     @apply bg-linear-to-br from-blue-700 via-cyan-400 to-teal-300;
   }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+  }
 }
