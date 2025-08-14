@@ -19,13 +19,17 @@ export function ContactButton({ className }: Props) {
   );
 }
 
+const socialButtonStyles =
+  'relative overflow-hidden rounded-full bg-[length:200%_200%] bg-[position:100%_100%] text-white transition-all duration-500 ease-out hover:bg-[position:0_0]';
+
 export function WhatsappButton({ className, ...props }: React.ComponentProps<'button'>) {
   return (
     <Button
       {...props}
       size="icon"
       className={cn(
-        'relative overflow-hidden rounded-full bg-[linear-gradient(135deg,#11998e,#38ef7d_50%,#4B5563_50%)] bg-[length:200%_200%] bg-[position:100%_100%] font-medium text-white transition-all duration-500 ease-out hover:bg-[position:0_0]',
+        'bg-[linear-gradient(135deg,#11998e,#38ef7d_50%,#4B5563_50%)]',
+        socialButtonStyles,
         className
       )}
     >
@@ -40,7 +44,8 @@ export function FacebookButton({ className, ...props }: React.ComponentProps<'bu
       {...props}
       size="icon"
       className={cn(
-        'relative overflow-hidden rounded-full bg-[linear-gradient(135deg,#0072ff,#00c6ff_50%,#4B5563_50%)] bg-[length:200%_200%] bg-[position:100%_100%] text-white transition-all duration-500 ease-out hover:bg-[position:0_0]',
+        'bg-[linear-gradient(135deg,#0072ff,#00c6ff_50%,#4B5563_50%)]',
+        socialButtonStyles,
         className
       )}
     >
@@ -55,7 +60,8 @@ export function InstagramButton({ className, ...props }: React.ComponentProps<'b
       {...props}
       size="icon"
       className={cn(
-        'relative overflow-hidden rounded-full bg-[linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045_50%,#4B5563_50%)] bg-[length:200%_200%] bg-[position:100%_100%] text-white transition-all duration-500 ease-out hover:bg-[position:0_0]',
+        'bg-[linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045_50%,#4B5563_50%)]',
+        socialButtonStyles,
         className
       )}
     >
