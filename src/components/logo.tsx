@@ -1,6 +1,8 @@
+import Link from 'next/link';
+
 export function Logo({ className }: Props) {
   return (
-    <div className={className}>
+    <Link href="/#hero" className={className}>
       <h1 className="text-primary flex flex-col items-center font-bold">
         <span className="font-rap-script text-gradient bg-orange-gradient px-[0.2em] text-[1.8em]">
           Maestro
@@ -10,6 +12,6 @@ export function Logo({ className }: Props) {
           brocha
         </span>
       </h1>
-    </div>
+    </Link>
   );
 }

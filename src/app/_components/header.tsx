@@ -4,7 +4,20 @@ import { useGSAP, gsap, ScrollTrigger } from '@/lib/gsap';
 import { FacebookButton, InstagramButton, WhatsappButton } from '@/components/buttons';
 import { Logo } from '@/components/logo';
 
+/**
+ * The `Header` component provides a fixed header bar at the top of the page.
+ * It utilizes GSAP animations to animate the header's entrance and control
+ * its visibility based on scroll direction. Social media buttons are included
+ * within the header. The buttons are animated to scale up on load.
+ *
+ * Animations:
+ * - The header slides in from the top on initial load.
+ * - Navigation buttons scale in with a staggered effect.
+ * - The header hides and shows based on scroll direction using ScrollTrigger.
+ */
+
 export function Header() {
+  // Animations
   const container = useRef(null);
   useGSAP(
     () => {
@@ -44,6 +57,7 @@ export function Header() {
     { scope: container }
   );
 
+  // Render
   return (
     <header ref={container} className="fixed top-0 right-0 left-0 z-20 w-full">
       <div className="header hidden w-full justify-center backdrop-blur-sm">
