@@ -5,14 +5,33 @@ import { Badge } from '@/components/ui/badge';
 import { ContactButton } from '@/components/buttons';
 import { useGSAP, SplitText, gsap } from '@/lib/gsap';
 
+/**
+ * The `Hero` component renders a full-screen section with a background image,
+ * showcasing professional painting services. It incorporates GSAP animations
+ * for various elements like the hero banner, title, subtitle, and service list.
+ *
+ * Animations:
+ * - Initial animations make the hero banner and text elements fade and slide into view.
+ * - Text elements are split into characters and words for individual animations.
+ * - Call-to-action and service items fade and slide in sequentially.
+ * - Scroll-triggered animations adjust the opacity of the hero banner.
+ *
+ * Inner Components:
+ * - `ServicesList`: A functional component for displaying service items with a check icon.
+ *
+ * The hero section includes a title, subtitles, and a list of services, with a
+ * contact button for user interaction.
+ */
+
 export function Hero() {
+  // Animations
   const container = useRef(null);
   useGSAP(
     () => {
       // Initial Animations
       gsap.from('.hero-banner', {
         opacity: 0,
-        duration: 0.6,
+        duration: 1,
         ease: 'power3.out',
         delay: 0.15,
         onStart: () => {
@@ -23,13 +42,14 @@ export function Hero() {
       SplitText.create('.title', {
         type: 'chars, words',
         autoSplit: true,
+        mask: 'chars',
         onSplit(self) {
           gsap.from(self.chars, {
-            x: 30,
+            y: 30,
             autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
-            stagger: 0.03,
+            stagger: 0.1,
             delay: 0.2,
-            onComplete: () => self.revert(),
+            ease: 'power3.out',
           });
         },
       });
@@ -40,31 +60,38 @@ export function Hero() {
         mask: 'chars',
         onSplit(self) {
           gsap.from(self.chars, {
-            y: 30,
-            stagger: 0.03,
+            x: 30,
+            stagger: 0.02,
             delay: 0.4,
             ease: 'power3.inOut',
             mask: 'chars',
-            onComplete: () => self.revert(),
           });
         },
       });
 
-      gsap.to('.cta', {
-        x: 0,
-        opacity: 1,
+      gsap.from('.cta', {
+        x: 24,
+        opacity: 0,
         duration: 0.8,
         ease: 'power1.out',
-        delay: 3,
+        delay: 2,
+        onStart: () => {
+          document.querySelector('.cta')?.classList.replace('hidden', 'flex');
+        },
       });
 
-      gsap.to('.service', {
-        opacity: 1,
-        x: 0,
+      gsap.from('.service', {
+        opacity: 0,
+        x: 24,
         duration: 0.9,
         ease: 'power3.out',
         stagger: 0.3,
-        delay: 4,
+        delay: 3,
+        onStart: () => {
+          document
+            .querySelectorAll('.service')
+            .forEach((service) => service.classList.replace('hidden', 'flex'));
+        },
       });
 
       // Scroll Animations
@@ -81,9 +108,10 @@ export function Hero() {
     { scope: container }
   );
 
+  // Inner Component
   const ServicesList = useCallback(
     ({ children }: PropsWithChildren) => (
-      <div className="service flex translate-x-8 items-center gap-2 text-neutral-200 opacity-0">
+      <div className="service hidden items-center gap-2 text-neutral-200">
         <CircleCheckBig className="size-4 text-cyan-500" />
         <p className="text-sm sm:text-base">{children}</p>
       </div>
@@ -91,15 +119,17 @@ export function Hero() {
     []
   );
 
+  // Render
   return (
     <section
+      id="hero"
       className="h-screen bg-cover bg-fixed bg-center"
       style={{ backgroundImage: "url('/images/hero.png')" }}
     >
       <div className="flex h-full w-full flex-col items-center bg-black/60">
         <div className="mt-28 w-full max-w-7xl px-4 sm:mt-48" ref={container}>
           {/** Hero Banner */}
-          <div className="hero-banner hidden max-w-[650px] flex-col gap-6 rounded-md p-6 backdrop-blur-sm sm:max-w-2/3 sm:gap-10">
+          <div className="hero-banner hidden min-h-[522px] max-w-[650px] flex-col gap-6 rounded-md p-6 backdrop-blur-sm sm:min-h-[390px] sm:max-w-2/3 sm:gap-10">
             <div className="flex flex-col gap-2">
               <Badge className="bg-neutral-500/80">⭐ Transformamos tu espacio con estilo</Badge>
               <h2 className="title text-5xl font-bold text-neutral-200 sm:text-6xl">
@@ -114,7 +144,7 @@ export function Hero() {
               </p>
             </div>
 
-            <ContactButton className="cta -translate-x-6 self-start opacity-0" />
+            <ContactButton className="cta hidden self-start" />
 
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <ServicesList>Residencial, comercial e institucional</ServicesList>
