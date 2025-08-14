@@ -7,9 +7,19 @@ import { useGSAP, SplitText, gsap } from '@/lib/gsap';
 
 export function Hero() {
   const container = useRef(null);
-
   useGSAP(
     () => {
+      // Initial Animations
+      gsap.from('.hero-banner', {
+        opacity: 0,
+        duration: 0.6,
+        ease: 'power3.out',
+        delay: 0.15,
+        onStart: () => {
+          document.querySelector('.hero-banner')?.classList.replace('hidden', 'flex');
+        },
+      });
+
       SplitText.create('.title', {
         type: 'chars, words',
         autoSplit: true,
@@ -33,17 +43,11 @@ export function Hero() {
             y: 30,
             stagger: 0.03,
             delay: 0.4,
+            ease: 'power3.inOut',
             mask: 'chars',
             onComplete: () => self.revert(),
           });
         },
-      });
-
-      gsap.to('.hero-banner', {
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power3.out',
-        delay: 0.15,
       });
 
       gsap.to('.cta', {
@@ -61,6 +65,17 @@ export function Hero() {
         ease: 'power3.out',
         stagger: 0.3,
         delay: 4,
+      });
+
+      // Scroll Animations
+      gsap.from('.hero-banner', {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: '.hero-banner',
+          start: '40% top',
+          end: '60% top',
+          scrub: 1,
+        },
       });
     },
     { scope: container }
@@ -84,7 +99,7 @@ export function Hero() {
       <div className="flex h-full w-full flex-col items-center bg-black/60">
         <div className="mt-28 w-full max-w-7xl px-4 sm:mt-48" ref={container}>
           {/** Hero Banner */}
-          <div className="hero-banner flex max-w-[650px] flex-col gap-6 rounded-md p-6 opacity-0 backdrop-blur-sm sm:max-w-2/3 sm:gap-10">
+          <div className="hero-banner hidden max-w-[650px] flex-col gap-6 rounded-md p-6 backdrop-blur-sm sm:max-w-2/3 sm:gap-10">
             <div className="flex flex-col gap-2">
               <Badge className="bg-neutral-500/80">⭐ Transformamos tu espacio con estilo</Badge>
               <h2 className="title text-5xl font-bold text-neutral-200 sm:text-6xl">

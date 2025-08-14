@@ -13,7 +13,7 @@ export function ContactButton({ className }: Props) {
     >
       <Link href="#" target="_blank" rel="noopener noreferrer">
         <WhatsappIcon className="size-5" />
-        <span>¡Cotiza ahora!</span>
+        <span>¿Pintamos?</span>
       </Link>
     </Button>
   );
