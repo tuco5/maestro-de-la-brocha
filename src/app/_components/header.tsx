@@ -5,7 +5,15 @@ import { Logo } from '@/components/logo';
 
 export function Header() {
   useGSAP(() => {
-    gsap.to('.header', { y: 96, duration: 0.4, ease: 'power3.out', opacity: 1 });
+    gsap.from('.header', {
+      y: -96,
+      duration: 0.6,
+      ease: 'power3.out',
+      opacity: 0,
+      onStart: () => {
+        document.querySelector('.header')?.classList.replace('hidden', 'flex');
+      },
+    });
     gsap.to('.nav-btn', {
       scale: 1,
       duration: 0.2,
@@ -16,7 +24,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="header fixed -top-24 right-0 left-0 flex w-full justify-center opacity-10 backdrop-blur-sm">
+    <header className="header fixed top-0 right-0 left-0 z-20 hidden w-full justify-center backdrop-blur-sm">
       <div className="flex w-full max-w-7xl items-center justify-between px-4 py-2">
         <Logo className="text-xs sm:text-xs" />
         <div className="flex items-center justify-end gap-2 sm:gap-3">
