@@ -17,7 +17,7 @@ export function Hero() {
           gsap.from(self.chars, {
             x: 30,
             autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
-            stagger: 0.05,
+            stagger: 0.03,
             delay: 0.2,
             onComplete: () => self.revert(),
           });
@@ -31,7 +31,7 @@ export function Hero() {
         onSplit(self) {
           gsap.from(self.chars, {
             y: 30,
-            stagger: 0.05,
+            stagger: 0.03,
             delay: 0.4,
             mask: 'chars',
             onComplete: () => self.revert(),
@@ -51,7 +51,7 @@ export function Hero() {
         opacity: 1,
         duration: 0.8,
         ease: 'power1.out',
-        delay: 0.4,
+        delay: 3,
       });
 
       gsap.to('.service', {
@@ -60,7 +60,7 @@ export function Hero() {
         duration: 0.9,
         ease: 'power3.out',
         stagger: 0.3,
-        delay: 0.5,
+        delay: 4,
       });
     },
     { scope: container }
